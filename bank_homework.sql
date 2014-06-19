@@ -1,11 +1,22 @@
--- In case there is already a bank_homework database, drop it
+DROP DATABASE bank_homework;-- In case there is already a bank_homework database, drop it
 
 
--- Create a bank_homework database
-
+CREATE DATABASE bank_homework;-- Create a bank_homework database
+\c bank_homework
 
 -- Connect to the bank_homework databases
 
+CREATE TABLE payments (
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP NOT NULL DEFAULT now(),
+  amount MONEY,
+  payer_name TEXT,
+  recipient_name TEXT,
+  description TEXT
+);
+
+INSERT INTO payments (amount, payer_name, recipient_name, description) VALUES
+  (40.33, 'Max', 'Chase', 'cable, gas, and electric');
 
 -- Create a payments table
 --  The table should have columns of id, created_at, amount, payer_name,
